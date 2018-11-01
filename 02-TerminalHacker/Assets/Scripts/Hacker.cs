@@ -5,6 +5,10 @@ using UnityEngine;
 public class Hacker : MonoBehaviour
 {
 
+    private static readonly List<string> SUPPORTED_LEVELS = new List<string> { "1", "2", "3" };
+
+    private int level;
+
     void Start()
     {
         showMainMenu();
@@ -33,9 +37,19 @@ Enter your selection:");
         {
             Terminal.WriteLine("Sorry, but your princess is in another castle.");
         }
+        else if (SUPPORTED_LEVELS.Contains(input))
+        {
+            level = int.Parse(input);
+            startLevel();
+        }
         else
         {
-            Terminal.WriteLine("Please select correct option.");
+            Terminal.WriteLine("Please select valid level.");
         }
+    }
+
+    private void startLevel()
+    {
+        Terminal.WriteLine($"You've chosen level {level}.");
     }
 }
