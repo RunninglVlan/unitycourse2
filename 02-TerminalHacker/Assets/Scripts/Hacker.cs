@@ -7,6 +7,11 @@ public class Hacker : MonoBehaviour
 
     void Start()
     {
+        showMainMenu();
+    }
+
+    private void showMainMenu()
+    {
         Terminal.WriteLine(
 @"What would you like to hack into?
 
