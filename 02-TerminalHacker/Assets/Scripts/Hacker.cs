@@ -34,14 +34,22 @@ Enter your selection:");
         {
             showMainMenu();
         }
-        else if (input == "mario")
+        else if (screen == Screen.MainMenu)
         {
-            Terminal.WriteLine("Sorry, but your princess is in another castle.");
+            processMainMenu(input);
         }
-        else if (SUPPORTED_LEVELS.Contains(input))
+    }
+
+    private void processMainMenu(string input)
+    {
+        if (SUPPORTED_LEVELS.Contains(input))
         {
             level = int.Parse(input);
             startLevel();
+        }
+        else if (input == "mario")
+        {
+            Terminal.WriteLine("Sorry, but your princess is in another castle.");
         }
         else
         {
