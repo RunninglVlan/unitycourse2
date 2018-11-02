@@ -76,13 +76,13 @@ public class DisplayBuffer
         int rowCount = 1;
         for (int i = lines.Length - 1; i >= 0; i--)
         {
-            if (rowCount > height)
-            {
-                return output;
-            }
             if (lines[i] == '\n')
             {
                 rowCount++;
+            }
+            if (rowCount > height)
+            {
+                return output;
             }
             output = lines[i] + output;
         }
