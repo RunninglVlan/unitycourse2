@@ -8,6 +8,7 @@ public class Hacker : MonoBehaviour
     private static readonly List<string> SUPPORTED_LEVELS = new List<string> { "1", "2", "3" };
 
     private int level;
+    private Screen screen = Screen.MainMenu;
 
     void Start()
     {
@@ -44,12 +45,19 @@ Enter your selection:");
         }
         else
         {
-            Terminal.WriteLine("Please select valid level.");
+            Terminal.WriteLine("Please select a valid level.");
         }
     }
 
     private void startLevel()
     {
-        Terminal.WriteLine($"You've chosen level {level}.");
+        screen = Screen.Password;
+        Terminal.WriteLine($"You've chosen the level {level}.");
+        Terminal.WriteLine("Please enter your password:");
+    }
+
+    enum Screen
+    {
+        MainMenu, Password, Win
     }
 }
