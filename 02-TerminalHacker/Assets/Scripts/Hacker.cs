@@ -5,9 +5,9 @@ using System.Linq;
 
 public class Hacker : MonoBehaviour
 {
-
     private const string MENU = "menu";
     private static readonly string MENU_HINT = $"You may type {MENU} at any time.";
+    private static readonly List<string> EXIT_WORDS = new List<string> { "quit", "close", "exit" };
 
     private static readonly List<Level> LEVELS = new List<Level>
     {
@@ -23,7 +23,8 @@ public class Hacker : MonoBehaviour
         new Level(
             name: "the police station",
             passwords: new [] { "witness", "sheriff", "law", "patrol", "arrest" },
-            rewardText: @"Here's your badge
+            rewardText: @"Here's your badge.
+Play again for a greater challenge.
  ,   /\   ,
 / '-'  '-' \
 |  POLICE  |
@@ -31,8 +32,7 @@ public class Hacker : MonoBehaviour
 |  ( 19 )  |
 \   '--'   /
  '--.  .--'
-     \/
-Play again for a greater challenge."),
+     \/"),
         new Level(
             name: "NASA",
             passwords: new []  { "apollo", "satellite", "orbit", "space", "galileo", "lander" },
@@ -73,6 +73,11 @@ Play again for a greater challenge."),
         if (input == MENU)
         {
             showMainMenu();
+        }
+        else if (EXIT_WORDS.Contains(input))
+        {
+            Terminal.WriteLine("You can close the tab if you're on the web.");
+            Application.Quit();
         }
         else if (screen == Screen.MainMenu)
         {
