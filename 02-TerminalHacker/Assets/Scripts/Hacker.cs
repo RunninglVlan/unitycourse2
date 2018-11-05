@@ -11,7 +11,33 @@ public class Hacker : MonoBehaviour
     private static readonly string[] NASA_PASSWORDS = { "apollo", "satellite", "orbit", "space", "galileo", "lander" };
 
     private static readonly string[][] LEVEL_PASSWORDS = { LIBRARY_PASSWORDS, POLICE_PASSWORDS, NASA_PASSWORDS };
-    private static readonly string[] LEVEL_REWARDS = { "book", "badge", "lab coat" };
+    private static readonly string[] LEVEL_REWARDS = { "book", "badge", "lab glasses" };
+    private static readonly string[] LEVEL_REWARD_ART = {
+        @"
+    _______
+   /      /,
+  /      //
+ /______//
+(______(/",
+        @"
+   ,   /\   ,
+  / '-'  '-' \
+  |  POLICE  |
+  |   .--.   |
+  |  ( 19 )  |
+  \   '--'   /
+   '--.  .--'
+       \/",
+        @"
+    __         __
+   /.-'       `-.\
+  //             \\
+ /j_______________j\
+/o.-==-. .-. .-==-.o\
+||      )) ((      ||
+ \\____//   \\____//
+  `-==-'     `-==-'"
+    };
 
     private int level;
     private string levelPassword;
@@ -95,6 +121,7 @@ Enter your selection:");
         screen = Screen.Win;
         Terminal.ClearScreen();
         Terminal.WriteLine($"Congratulations, here's your {LEVEL_REWARDS[level - 1]}");
+        Terminal.WriteLine(LEVEL_REWARD_ART[level - 1]);
     }
 
     enum Screen
