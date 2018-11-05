@@ -1,25 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Hacker : MonoBehaviour
 {
-    private static readonly List<string> SUPPORTED_LEVELS = new List<string> { "1", "2", "3" };
 
-    private static readonly string[] LIBRARY_PASSWORDS = { "bookworm", "archive", "history", "biography" };
-    private static readonly string[] POLICE_PASSWORDS = { "witness", "sheriff", "law", "patrol", "arrest" };
-    private static readonly string[] NASA_PASSWORDS = { "apollo", "satellite", "orbit", "space", "galileo", "lander" };
-
-    private static readonly string[][] LEVEL_PASSWORDS = { LIBRARY_PASSWORDS, POLICE_PASSWORDS, NASA_PASSWORDS };
-    private static readonly string[] LEVEL_REWARDS = { "book", "badge", "lab glasses" };
-    private static readonly string[] LEVEL_REWARD_ART = {
-        @"
+    private static readonly List<Level> LEVELS = new List<Level>
+    {
+        new Level(
+            name: "the local library",
+            passwords: new [] { "bookworm", "archive", "history", "biography" },
+            reward: @"book
     _______
    /      /,
   /      //
  /______//
-(______(/",
-        @"
+(______(/"),
+        new Level(
+            name: "the police station",
+            passwords: new [] { "witness", "sheriff", "law", "patrol", "arrest" },
+            reward: @"badge
    ,   /\   ,
   / '-'  '-' \
   |  POLICE  |
@@ -27,8 +28,11 @@ public class Hacker : MonoBehaviour
   |  ( 19 )  |
   \   '--'   /
    '--.  .--'
-       \/",
-        @"
+       \/"),
+        new Level(
+            name: "NASA",
+            passwords: new []  { "apollo", "satellite", "orbit", "space", "galileo", "lander" },
+            reward: @"lab glasses
     __         __
    /.-'       `-.\
   //             \\
@@ -36,10 +40,10 @@ public class Hacker : MonoBehaviour
 /o.-==-. .-. .-==-.o\
 ||      )) ((      ||
  \\____//   \\____//
-  `-==-'     `-==-'"
+  `-==-'     `-==-'")
     };
 
-    private int level;
+    private Level level;
     private string levelPassword;
     private Screen screen;
 
@@ -52,14 +56,12 @@ public class Hacker : MonoBehaviour
     {
         screen = Screen.MainMenu;
         Terminal.ClearScreen();
-        Terminal.WriteLine(
-@"What would you like to hack into?
-
-Press 1 for the local library
-Press 2 for the police station
-Press 3 for NASA
-
-Enter your selection:");
+        Terminal.WriteLine("What would you like to hack into?");
+        for (int index = 0; index < LEVELS.Count; index++)
+        {
+            Terminal.WriteLine($"Press {index + 1} for {LEVELS[index].name}");
+        }
+        Terminal.WriteLine("Enter your selection:");
     }
 
     void OnUserInput(string input)
@@ -80,9 +82,10 @@ Enter your selection:");
 
     private void processMainMenu(string input)
     {
-        if (SUPPORTED_LEVELS.Contains(input))
+        var validLevelNumbers = LEVELS.Select((_, index) => (index + 1).ToString()).ToList();
+        if (validLevelNumbers.Contains(input))
         {
-            level = int.Parse(input);
+            level = LEVELS[int.Parse(input) - 1];
             startLevel();
         }
         else if (input == "mario")
@@ -98,7 +101,7 @@ Enter your selection:");
     private void startLevel()
     {
         screen = Screen.Password;
-        var levelPasswords = LEVEL_PASSWORDS[level - 1];
+        var levelPasswords = level.passwords;
         levelPassword = levelPasswords[Random.Range(0, levelPasswords.Length)];
         Terminal.ClearScreen();
         Terminal.WriteLine("Please enter your password:");
@@ -120,12 +123,25 @@ Enter your selection:");
     {
         screen = Screen.Win;
         Terminal.ClearScreen();
-        Terminal.WriteLine($"Congratulations, here's your {LEVEL_REWARDS[level - 1]}");
-        Terminal.WriteLine(LEVEL_REWARD_ART[level - 1]);
+        Terminal.WriteLine($"Congratulations, here's your {level.reward}");
     }
 
-    enum Screen
+    private enum Screen
     {
         MainMenu, Password, Win
+    }
+
+    private class Level
+    {
+        public string name { get; private set; }
+        public string[] passwords { get; private set; }
+        public string reward { get; private set; }
+
+        public Level(string name, string[] passwords, string reward)
+        {
+            this.name = name;
+            this.passwords = passwords;
+            this.reward = reward;
+        }
     }
 }
