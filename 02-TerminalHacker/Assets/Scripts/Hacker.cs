@@ -72,9 +72,9 @@ Enter your selection:");
     private void startLevel()
     {
         screen = Screen.Password;
-        Terminal.WriteLine($"You've chosen level {level}.");
         var levelPasswords = LEVEL_PASSWORDS[level.ToString()];
         levelPassword = levelPasswords[Random.Range(0, levelPasswords.Length)];
+        Terminal.ClearScreen();
         Terminal.WriteLine("Please enter your password:");
     }
 
