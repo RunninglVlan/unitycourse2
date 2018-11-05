@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Hacker : MonoBehaviour
 {
+    private static readonly List<string> SUPPORTED_LEVELS = new List<string> { "1", "2", "3" };
 
-    private static readonly string[] LEVEL1_PASSWORDS = { "bookworm", "archive", "history", "biography" };
-    private static readonly string[] LEVEL2_PASSWORDS = { "witness", "sheriff", "law", "patrol", "arrest" };
-    private static readonly string[] LEVEL3_PASSWORDS = { "apollo", "satellite", "orbit", "space", "galileo", "lander" };
+    private static readonly string[] LIBRARY_PASSWORDS = { "bookworm", "archive", "history", "biography" };
+    private static readonly string[] POLICE_PASSWORDS = { "witness", "sheriff", "law", "patrol", "arrest" };
+    private static readonly string[] NASA_PASSWORDS = { "apollo", "satellite", "orbit", "space", "galileo", "lander" };
 
-    private static readonly Dictionary<string, string[]> LEVEL_PASSWORDS = new Dictionary<string, string[]> {
-        { "1", LEVEL1_PASSWORDS }, { "2", LEVEL2_PASSWORDS }, { "3", LEVEL3_PASSWORDS }
-    };
+    private static readonly string[][] LEVEL_PASSWORDS = { LIBRARY_PASSWORDS, POLICE_PASSWORDS, NASA_PASSWORDS };
+    private static readonly string[] LEVEL_REWARDS = { "book", "badge", "lab coat" };
 
     private int level;
     private string levelPassword;
@@ -54,7 +54,7 @@ Enter your selection:");
 
     private void processMainMenu(string input)
     {
-        if (LEVEL_PASSWORDS.ContainsKey(input))
+        if (SUPPORTED_LEVELS.Contains(input))
         {
             level = int.Parse(input);
             startLevel();
@@ -72,7 +72,7 @@ Enter your selection:");
     private void startLevel()
     {
         screen = Screen.Password;
-        var levelPasswords = LEVEL_PASSWORDS[level.ToString()];
+        var levelPasswords = LEVEL_PASSWORDS[level - 1];
         levelPassword = levelPasswords[Random.Range(0, levelPasswords.Length)];
         Terminal.ClearScreen();
         Terminal.WriteLine("Please enter your password:");
@@ -82,12 +82,19 @@ Enter your selection:");
     {
         if (levelPassword == input)
         {
-            Terminal.WriteLine("Congratulations.");
+            displayWinScreen();
         }
         else
         {
             Terminal.WriteLine("Invalid password, try again.");
         }
+    }
+
+    private void displayWinScreen()
+    {
+        screen = Screen.Win;
+        Terminal.ClearScreen();
+        Terminal.WriteLine($"Congratulations, here's your {LEVEL_REWARDS[level - 1]}");
     }
 
     enum Screen
