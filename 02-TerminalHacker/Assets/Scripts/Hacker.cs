@@ -5,9 +5,9 @@ using UnityEngine;
 public class Hacker : MonoBehaviour
 {
 
-    private static readonly string[] LEVEL1_PASSWORDS = { "bookworm", "archive", "history", "biography", "gallery" };
+    private static readonly string[] LEVEL1_PASSWORDS = { "bookworm", "archive", "history", "biography" };
     private static readonly string[] LEVEL2_PASSWORDS = { "witness", "sheriff", "law", "patrol", "arrest" };
-    private static readonly string[] LEVEL3_PASSWORDS = { "apollo", "satellite", "orbit", "space", "galileo" };
+    private static readonly string[] LEVEL3_PASSWORDS = { "apollo", "satellite", "orbit", "space", "galileo", "lander" };
 
     private static readonly Dictionary<string, string[]> LEVEL_PASSWORDS = new Dictionary<string, string[]> {
         { "1", LEVEL1_PASSWORDS }, { "2", LEVEL2_PASSWORDS }, { "3", LEVEL3_PASSWORDS }
