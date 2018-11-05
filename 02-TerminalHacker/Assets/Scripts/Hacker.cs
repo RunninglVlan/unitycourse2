@@ -5,12 +5,16 @@ using System.Linq;
 
 public class Hacker : MonoBehaviour
 {
+
+    private const string MENU = "menu";
+    private static readonly string MENU_HINT = $"You may type {MENU} at any time.";
+
     private static readonly List<Level> LEVELS = new List<Level>
     {
         new Level(
             name: "the local library",
             passwords: new [] { "bookworm", "archive", "history", "biography" },
-            reward: @"book
+            rewardText: @"Have a book...
     _______
    /      /,
   /      //
@@ -19,19 +23,20 @@ public class Hacker : MonoBehaviour
         new Level(
             name: "the police station",
             passwords: new [] { "witness", "sheriff", "law", "patrol", "arrest" },
-            reward: @"badge
-   ,   /\   ,
-  / '-'  '-' \
-  |  POLICE  |
-  |   .--.   |
-  |  ( 19 )  |
-  \   '--'   /
-   '--.  .--'
-       \/"),
+            rewardText: @"Here's your badge
+ ,   /\   ,
+/ '-'  '-' \
+|  POLICE  |
+|   .--.   |
+|  ( 19 )  |
+\   '--'   /
+ '--.  .--'
+     \/
+Play again for a greater challenge."),
         new Level(
             name: "NASA",
             passwords: new []  { "apollo", "satellite", "orbit", "space", "galileo", "lander" },
-            reward: @"lab glasses
+            rewardText: @"Welcome to NASA's internal system! Lab glasses will be useful here.
     __         __
    /.-'       `-.\
   //             \\
@@ -65,7 +70,7 @@ public class Hacker : MonoBehaviour
 
     void OnUserInput(string input)
     {
-        if (input == "menu")
+        if (input == MENU)
         {
             showMainMenu();
         }
@@ -94,6 +99,7 @@ public class Hacker : MonoBehaviour
         else
         {
             Terminal.WriteLine("Please select a valid level.");
+            Terminal.WriteLine(MENU_HINT);
         }
     }
 
@@ -103,7 +109,8 @@ public class Hacker : MonoBehaviour
         var levelPasswords = level.passwords;
         levelPassword = levelPasswords[Random.Range(0, levelPasswords.Length)];
         Terminal.ClearScreen();
-        Terminal.WriteLine($"Enter your password, hint {levelPassword.Anagram() }:");
+        Terminal.WriteLine($"Enter your password, hint {levelPassword.Anagram()}:");
+        Terminal.WriteLine(MENU_HINT);
     }
 
     private void checkPassword(string input)
@@ -122,7 +129,9 @@ public class Hacker : MonoBehaviour
     {
         screen = Screen.Win;
         Terminal.ClearScreen();
-        Terminal.WriteLine($"Congratulations, here's your {level.reward}");
+        Terminal.WriteLine("Congratulations.");
+        Terminal.WriteLine(level.rewardText);
+        Terminal.WriteLine(MENU_HINT);
     }
 
     private enum Screen
@@ -134,13 +143,13 @@ public class Hacker : MonoBehaviour
     {
         public string name { get; private set; }
         public string[] passwords { get; private set; }
-        public string reward { get; private set; }
+        public string rewardText { get; private set; }
 
-        public Level(string name, string[] passwords, string reward)
+        public Level(string name, string[] passwords, string rewardText)
         {
             this.name = name;
             this.passwords = passwords;
-            this.reward = reward;
+            this.rewardText = rewardText;
         }
     }
 }
