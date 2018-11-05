@@ -5,7 +5,6 @@ using System.Linq;
 
 public class Hacker : MonoBehaviour
 {
-
     private static readonly List<Level> LEVELS = new List<Level>
     {
         new Level(
@@ -86,7 +85,7 @@ public class Hacker : MonoBehaviour
         if (validLevelNumbers.Contains(input))
         {
             level = LEVELS[int.Parse(input) - 1];
-            startLevel();
+            askForPassword();
         }
         else if (input == "mario")
         {
@@ -98,13 +97,13 @@ public class Hacker : MonoBehaviour
         }
     }
 
-    private void startLevel()
+    private void askForPassword()
     {
         screen = Screen.Password;
         var levelPasswords = level.passwords;
         levelPassword = levelPasswords[Random.Range(0, levelPasswords.Length)];
         Terminal.ClearScreen();
-        Terminal.WriteLine("Please enter your password:");
+        Terminal.WriteLine($"Enter your password, hint {levelPassword.Anagram() }:");
     }
 
     private void checkPassword(string input)
@@ -115,7 +114,7 @@ public class Hacker : MonoBehaviour
         }
         else
         {
-            Terminal.WriteLine("Invalid password, try again.");
+            askForPassword();
         }
     }
 
