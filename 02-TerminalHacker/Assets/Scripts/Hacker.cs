@@ -5,11 +5,16 @@ using UnityEngine;
 public class Hacker : MonoBehaviour
 {
 
-    private static readonly Dictionary<string, string> LEVEL_PASSWORDS = new Dictionary<string, string> {
-        { "1", "bookworm" }, { "2", "witness" }, { "3", "apollo" }
+    private static readonly string[] LEVEL1_PASSWORDS = { "bookworm", "archive", "history", "biography", "gallery" };
+    private static readonly string[] LEVEL2_PASSWORDS = { "witness", "sheriff", "law", "patrol", "arrest" };
+    private static readonly string[] LEVEL3_PASSWORDS = { "apollo", "satellite", "orbit", "space", "galileo" };
+
+    private static readonly Dictionary<string, string[]> LEVEL_PASSWORDS = new Dictionary<string, string[]> {
+        { "1", LEVEL1_PASSWORDS }, { "2", LEVEL2_PASSWORDS }, { "3", LEVEL3_PASSWORDS }
     };
 
     private int level;
+    private string levelPassword;
     private Screen screen;
 
     void Start()
@@ -68,12 +73,14 @@ Enter your selection:");
     {
         screen = Screen.Password;
         Terminal.WriteLine($"You've chosen level {level}.");
+        var levelPasswords = LEVEL_PASSWORDS[level.ToString()];
+        levelPassword = levelPasswords[Random.Range(0, levelPasswords.Length)];
         Terminal.WriteLine("Please enter your password:");
     }
 
     private void checkPassword(string input)
     {
-        if (LEVEL_PASSWORDS[level.ToString()] == input)
+        if (levelPassword == input)
         {
             Terminal.WriteLine("Congratulations.");
         }
