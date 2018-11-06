@@ -30,7 +30,9 @@ public class Rocket : MonoBehaviour
         {
             rigidbody.AddRelativeForce(Vector3.up * thrust);
         }
-        rigidbody.AddTorque(Vector3.back * torque * Input.GetAxis("Horizontal"));
+        rigidbody.freezeRotation = true;
+        transform.Rotate(Vector3.back * Input.GetAxis("Horizontal") * torque * Time.deltaTime);
+        rigidbody.freezeRotation = false;
     }
 
     private void playSound()

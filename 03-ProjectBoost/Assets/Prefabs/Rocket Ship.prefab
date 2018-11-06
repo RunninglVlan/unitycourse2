@@ -346,12 +346,12 @@ Rigidbody:
   m_GameObject: {fileID: 1135555674479034}
   serializedVersion: 2
   m_Mass: 0.75
-  m_Drag: 0
+  m_Drag: 0.2
   m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 48
+  m_Constraints: 56
   m_CollisionDetection: 0
 --- !u!65 &65798159989910728
 BoxCollider:
@@ -483,8 +483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0063a77287e455a428bc90979d9761cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 15
-  torque: 5
+  thrust: 20
+  torque: 50
 --- !u!135 &135550677264614890
 SphereCollider:
   m_ObjectHideFlags: 1
