@@ -19,6 +19,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4320055489215946}
+  - component: {fileID: 54856353003238140}
+  - component: {fileID: 114745409906751912}
   m_Layer: 0
   m_Name: Rocket Ship
   m_TagString: Untagged
@@ -54,7 +56,7 @@ GameObject:
   - component: {fileID: 4001498483686262}
   - component: {fileID: 33265579804959702}
   - component: {fileID: 23682703975884674}
-  - component: {fileID: 65984678209068910}
+  - component: {fileID: 136309530025341682}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -72,7 +74,7 @@ GameObject:
   - component: {fileID: 4280269694813202}
   - component: {fileID: 33841198233901336}
   - component: {fileID: 23856398524100268}
-  - component: {fileID: 65197151432491002}
+  - component: {fileID: 65961372828006652}
   m_Layer: 0
   m_Name: Port Booster
   m_TagString: Untagged
@@ -90,7 +92,7 @@ GameObject:
   - component: {fileID: 4090762644580444}
   - component: {fileID: 33617547539138630}
   - component: {fileID: 23157918339328442}
-  - component: {fileID: 65005363944599042}
+  - component: {fileID: 65798159989910728}
   m_Layer: 0
   m_Name: Starboard Booster
   m_TagString: Untagged
@@ -144,7 +146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1135555674479034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.75, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4001498483686262}
@@ -335,7 +337,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1802650281405764}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65005363944599042
+--- !u!54 &54856353003238140
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1135555674479034}
+  serializedVersion: 2
+  m_Mass: 0.75
+  m_Drag: 0
+  m_AngularDrag: 0.1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 48
+  m_CollisionDetection: 0
+--- !u!65 &65798159989910728
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -345,9 +362,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65197151432491002
+--- !u!65 &65961372828006652
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,20 +374,22 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65984678209068910
-BoxCollider:
+--- !u!114 &114745409906751912
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1794005593566580}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 1135555674479034}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0063a77287e455a428bc90979d9761cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 15
+  torque: 5
+  debugVelocity: {x: 0, y: 0, z: 0}
 --- !u!135 &135550677264614890
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -382,4 +401,17 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136309530025341682
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794005593566580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
