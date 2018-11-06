@@ -20,30 +20,30 @@ public class Rocket : MonoBehaviour
 
     void Update()
     {
-        move();
-        playSound();
+        moveUp();
+        rotate();
     }
 
-    private void move()
+    private void moveUp()
     {
         if (Input.GetButton(THRUST_BUTTON))
         {
             rigidbody.AddRelativeForce(Vector3.up * thrust);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
-        rigidbody.freezeRotation = true;
-        transform.Rotate(Vector3.back * Input.GetAxis("Horizontal") * torque * Time.deltaTime);
-        rigidbody.freezeRotation = false;
-    }
-
-    private void playSound()
-    {
-        if (Input.GetButtonDown(THRUST_BUTTON))
-        {
-            audioSource.Play();
-        }
-        if (Input.GetButtonUp(THRUST_BUTTON))
+        else
         {
             audioSource.Stop();
         }
+    }
+
+    private void rotate()
+    {
+        rigidbody.freezeRotation = true;
+        transform.Rotate(Vector3.back * Input.GetAxis("Horizontal") * torque * Time.deltaTime);
+        rigidbody.freezeRotation = false;
     }
 }
