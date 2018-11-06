@@ -10,15 +10,18 @@ public class Rocket : MonoBehaviour
     [SerializeField] int torque = 10;
 
     new private Rigidbody rigidbody;
+    private AudioSource audioSource;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         move();
+        playSound();
     }
 
     private void move()
@@ -28,5 +31,17 @@ public class Rocket : MonoBehaviour
             rigidbody.AddRelativeForce(Vector3.up * thrust);
         }
         rigidbody.AddTorque(Vector3.back * torque * Input.GetAxis("Horizontal"));
+    }
+
+    private void playSound()
+    {
+        if (Input.GetButtonDown(THRUST_BUTTON))
+        {
+            audioSource.Play();
+        }
+        if (Input.GetButtonUp(THRUST_BUTTON))
+        {
+            audioSource.Stop();
+        }
     }
 }
