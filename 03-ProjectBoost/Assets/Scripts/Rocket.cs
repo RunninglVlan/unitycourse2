@@ -5,17 +5,29 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     private const string THRUST_BUTTON = "Jump";
+    private const float DISTANCE_FROM_PAD = 2.5f;
 
     [SerializeField] int thrust = 20;
     [SerializeField] int torque = 10;
+    [SerializeField] GameObject launchPad;
 
     new private Rigidbody rigidbody;
     private AudioSource audioSource;
+    private Vector3 startingPosition;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        startingPosition = launchPad.transform.position + new Vector3(0, DISTANCE_FROM_PAD, 0);
+        reset();
+    }
+
+    private void reset()
+    {
+        transform.position = startingPosition;
+        transform.rotation = Quaternion.identity;
+        rigidbody.velocity = Vector3.zero;
     }
 
     void Update()
@@ -51,7 +63,7 @@ public class Rocket : MonoBehaviour
     {
         if (other.gameObject.tag != "Friendly")
         {
-            Destroy(gameObject);
+            reset();
         }
     }
 }

@@ -485,6 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 30
   torque: 60
+  launchPad: {fileID: 0}
 --- !u!135 &135550677264614890
 SphereCollider:
   m_ObjectHideFlags: 1
