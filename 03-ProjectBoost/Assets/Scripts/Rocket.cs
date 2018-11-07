@@ -46,4 +46,12 @@ public class Rocket : MonoBehaviour
         transform.Rotate(Vector3.back * Input.GetAxis("Horizontal") * torque * Time.deltaTime);
         rigidbody.freezeRotation = false;
     }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag != "Friendly")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
