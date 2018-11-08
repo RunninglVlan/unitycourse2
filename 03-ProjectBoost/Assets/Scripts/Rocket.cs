@@ -14,11 +14,13 @@ public class Rocket : MonoBehaviour
 
     new private Rigidbody rigidbody;
     private AudioSource audioSource;
+    private int currentSceneIndex;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
     void Update()
@@ -52,7 +54,11 @@ public class Rocket : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag != "Friendly")
+        if (other.gameObject.tag == "Finish")
+        {
+            loadNextLevel();
+        }
+        else if (other.gameObject.tag != "Friendly")
         {
             resetLevel();
         }
@@ -60,7 +66,11 @@ public class Rocket : MonoBehaviour
 
     private void resetLevel()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    private void loadNextLevel()
+    {
+        SceneManager.LoadScene(currentSceneIndex + 1);
     }
 }
