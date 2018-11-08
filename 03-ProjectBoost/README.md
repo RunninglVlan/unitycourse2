@@ -70,6 +70,7 @@
           m_GameObject: {fileID: 1003093614604834}
           ...
         ...
+- It's possible to Copy Component and Paste it or only its Values to another GameObject
 
 ## Assets used
 - Sound FX: [_Rocket Launch_ by primeval_polypod](https://freesound.org/people/primeval_polypod/sounds/158894/)

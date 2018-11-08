@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
@@ -13,21 +14,11 @@ public class Rocket : MonoBehaviour
 
     new private Rigidbody rigidbody;
     private AudioSource audioSource;
-    private Vector3 startingPosition;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
-        startingPosition = launchPad.transform.position + new Vector3(0, DISTANCE_FROM_PAD, 0);
-        reset();
-    }
-
-    private void reset()
-    {
-        transform.position = startingPosition;
-        transform.rotation = Quaternion.identity;
-        rigidbody.velocity = Vector3.zero;
     }
 
     void Update()
@@ -63,7 +54,13 @@ public class Rocket : MonoBehaviour
     {
         if (other.gameObject.tag != "Friendly")
         {
-            reset();
+            resetLevel();
         }
+    }
+
+    private void resetLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }
