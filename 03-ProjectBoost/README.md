@@ -74,4 +74,6 @@
 - If on Scene load some light is missing, then open Lighting Settings Window and try Generating Lighting manually for each Scene
 
 ## Assets used
-- Sound FX: [_Rocket Launch_ by primeval_polypod](https://freesound.org/people/primeval_polypod/sounds/158894/)
+- Sound FX:
+  - [_Rocket Launch_ by primeval_polypod](https://freesound.org/people/primeval_polypod/sounds/158894/)
+  - [_Missile explosion_ by smcameron](https://freesound.org/people/smcameron/sounds/51467/)

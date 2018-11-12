@@ -11,9 +11,12 @@ public class Rocket : MonoBehaviour
 
     [SerializeField] int thrust = 20;
     [SerializeField] int torque = 10;
-    [SerializeField] GameObject launchPad;
     [SerializeField] float levelLoadDelay = 1;
+
+    [Header("Sounds")]
     [SerializeField] AudioClip thrustSound;
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip levelLoadSound;
 
     new private Rigidbody rigidbody;
     private AudioSource audioSource;
@@ -31,7 +34,6 @@ public class Rocket : MonoBehaviour
     {
         if (state != State.Alive)
         {
-            audioSource.Stop();
             return;
         }
         moveUp();
@@ -67,14 +69,17 @@ public class Rocket : MonoBehaviour
         {
             return;
         }
+        audioSource.Stop();
         if (other.gameObject.tag == "Finish")
         {
             state = State.Transcending;
+            audioSource.PlayOneShot(levelLoadSound);
             StartCoroutine(after(levelLoadDelay, loadNextLevel));
         }
         else if (other.gameObject.tag != "Friendly")
         {
             state = State.Dying;
+            audioSource.PlayOneShot(deathSound);
             StartCoroutine(after(levelLoadDelay, resetLevel));
         }
     }
