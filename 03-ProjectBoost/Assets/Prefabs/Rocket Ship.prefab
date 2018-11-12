@@ -461,9 +461,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 30
   torque: 70
-  launchPad: {fileID: 0}
   levelLoadDelay: 1
   thrustSound: {fileID: 8300000, guid: 506391758fe6ba047b00500fdf1cba46, type: 3}
+  deathSound: {fileID: 8300000, guid: 5965e0b4ea0390a4b9e8bc1785130d31, type: 3}
+  levelLoadSound: {fileID: 8300000, guid: 9898a0f7b0fd4634bbeb84e77faab34b, type: 3}
 --- !u!135 &135550677264614890
 SphereCollider:
   m_ObjectHideFlags: 1
