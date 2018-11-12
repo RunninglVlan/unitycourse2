@@ -72,32 +72,38 @@ public class Rocket : MonoBehaviour
         audioSource.Stop();
         if (other.gameObject.tag == "Finish")
         {
-            state = State.Transcending;
-            audioSource.PlayOneShot(levelLoadSound);
-            StartCoroutine(after(levelLoadDelay, loadNextLevel));
+            loadNextLevel();
         }
         else if (other.gameObject.tag != "Friendly")
         {
-            state = State.Dying;
-            audioSource.PlayOneShot(deathSound);
-            StartCoroutine(after(levelLoadDelay, resetLevel));
+            resetLevel();
         }
+    }
+
+    private void loadNextLevel()
+    {
+        state = State.Transcending;
+        audioSource.PlayOneShot(levelLoadSound);
+        StartCoroutine(after(levelLoadDelay, () =>
+        {
+            SceneManager.LoadScene(currentSceneIndex + 1);
+        }));
+    }
+
+    private void resetLevel()
+    {
+        state = State.Dying;
+        audioSource.PlayOneShot(deathSound);
+        StartCoroutine(after(levelLoadDelay, () =>
+        {
+            SceneManager.LoadScene(currentSceneIndex);
+        }));
     }
 
     private IEnumerator after(float delay, Action action)
     {
         yield return new WaitForSeconds(delay);
         action();
-    }
-
-    private void resetLevel()
-    {
-        SceneManager.LoadScene(currentSceneIndex);
-    }
-
-    private void loadNextLevel()
-    {
-        SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
     private enum State
