@@ -13,6 +13,7 @@ public class Rocket : MonoBehaviour
     [SerializeField] int torque = 10;
     [SerializeField] GameObject launchPad;
     [SerializeField] float levelLoadDelay = 1;
+    [SerializeField] AudioClip thrustSound;
 
     new private Rigidbody rigidbody;
     private AudioSource audioSource;
@@ -44,7 +45,7 @@ public class Rocket : MonoBehaviour
             rigidbody.AddRelativeForce(Vector3.up * thrust);
             if (!audioSource.isPlaying)
             {
-                audioSource.Play();
+                audioSource.PlayOneShot(thrustSound);
             }
         }
         else
