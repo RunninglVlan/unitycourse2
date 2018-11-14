@@ -152,11 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114745409906751912, guid: 23bc172b875e1844f944be002778465b,
-        type: 2}
-      propertyPath: launchPad
-      value: 
-      objectReference: {fileID: 1413155090}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23bc172b875e1844f944be002778465b, type: 2}
   m_IsPrefabAsset: 0
@@ -1079,11 +1074,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c3abf0fb67796a4eb94fe8e6358e3b8, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1413155090 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1099560394243382, guid: 94a91d2ba52ae4c4bbae3d1fd924bb7a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1034984110}
 --- !u!1001 &1541314704
 Prefab:
   m_ObjectHideFlags: 0

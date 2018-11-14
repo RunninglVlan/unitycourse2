@@ -18,8 +18,13 @@ public class Rocket : MonoBehaviour
     [SerializeField] AudioClip deathSound;
     [SerializeField] AudioClip levelLoadSound;
 
+    [Header("Particles")]
+    [SerializeField] GameObject deathEffect;
+    [SerializeField] GameObject levelLoadEffect;
+
     new private Rigidbody rigidbody;
     private AudioSource audioSource;
+    private ParticleSystem thrustEffect;
     private int currentSceneIndex;
     private State state = State.Alive;
 
@@ -27,6 +32,7 @@ public class Rocket : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        thrustEffect = GetComponentInChildren<ParticleSystem>();
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
@@ -49,10 +55,11 @@ public class Rocket : MonoBehaviour
             {
                 audioSource.PlayOneShot(thrustSound);
             }
+            thrustEffect.Play();
         }
         else
         {
-            audioSource.Stop();
+            stopEffects();
         }
     }
 
@@ -69,7 +76,7 @@ public class Rocket : MonoBehaviour
         {
             return;
         }
-        audioSource.Stop();
+        stopEffects();
         if (other.gameObject.tag == "Finish")
         {
             loadNextLevel();
@@ -80,10 +87,17 @@ public class Rocket : MonoBehaviour
         }
     }
 
+    private void stopEffects()
+    {
+        audioSource.Stop();
+        thrustEffect.Stop();
+    }
+
     private void loadNextLevel()
     {
         state = State.Transcending;
         audioSource.PlayOneShot(levelLoadSound);
+        Instantiate(levelLoadEffect, transform.position, Quaternion.identity);
         StartCoroutine(after(levelLoadDelay, () =>
         {
             SceneManager.LoadScene(currentSceneIndex + 1);
@@ -94,6 +108,7 @@ public class Rocket : MonoBehaviour
     {
         state = State.Dying;
         audioSource.PlayOneShot(deathSound);
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
         StartCoroutine(after(levelLoadDelay, () =>
         {
             SceneManager.LoadScene(currentSceneIndex);
