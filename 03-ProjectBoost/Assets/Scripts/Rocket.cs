@@ -19,12 +19,12 @@ public class Rocket : MonoBehaviour
     [SerializeField] AudioClip levelLoadSound;
 
     [Header("Particles")]
-    [SerializeField] GameObject deathEffect;
-    [SerializeField] GameObject levelLoadEffect;
+    [SerializeField] ParticleSystem thrustEffect;
+    [SerializeField] ParticleSystem deathEffect;
+    [SerializeField] ParticleSystem levelLoadEffect;
 
     new private Rigidbody rigidbody;
     private AudioSource audioSource;
-    private ParticleSystem thrustEffect;
     private int currentSceneIndex;
     private State state = State.Alive;
 
@@ -32,7 +32,6 @@ public class Rocket : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
-        thrustEffect = GetComponentInChildren<ParticleSystem>();
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
@@ -59,7 +58,7 @@ public class Rocket : MonoBehaviour
         }
         else
         {
-            stopEffects();
+            stopAudioAndThrustEffect();
         }
     }
 
@@ -76,7 +75,7 @@ public class Rocket : MonoBehaviour
         {
             return;
         }
-        stopEffects();
+        stopAudioAndThrustEffect();
         if (other.gameObject.tag == "Finish")
         {
             loadNextLevel();
@@ -87,7 +86,7 @@ public class Rocket : MonoBehaviour
         }
     }
 
-    private void stopEffects()
+    private void stopAudioAndThrustEffect()
     {
         audioSource.Stop();
         thrustEffect.Stop();
@@ -97,7 +96,7 @@ public class Rocket : MonoBehaviour
     {
         state = State.Transcending;
         audioSource.PlayOneShot(levelLoadSound);
-        Instantiate(levelLoadEffect, transform.position, Quaternion.identity);
+        levelLoadEffect.Play();
         StartCoroutine(after(levelLoadDelay, () =>
         {
             SceneManager.LoadScene(currentSceneIndex + 1);
@@ -108,7 +107,7 @@ public class Rocket : MonoBehaviour
     {
         state = State.Dying;
         audioSource.PlayOneShot(deathSound);
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        deathEffect.Play();
         StartCoroutine(after(levelLoadDelay, () =>
         {
             SceneManager.LoadScene(currentSceneIndex);
