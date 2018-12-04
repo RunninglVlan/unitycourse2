@@ -288,8 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a10ada1fcf5ec4b9f21d734c58a5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 20, y: 0, z: 0}
-  movementFactor: 0
+  movementVector: {x: 7, y: 0, z: 0}
+  cycleTime: 2
 --- !u!1001 &183426256
 Prefab:
   m_ObjectHideFlags: 0
