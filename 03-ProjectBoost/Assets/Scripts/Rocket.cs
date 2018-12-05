@@ -78,7 +78,7 @@ public class Rocket : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            loadNextLevel();
+            loadNextDebugLevel();
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -118,6 +118,13 @@ public class Rocket : MonoBehaviour
         {
             SceneManager.LoadScene(currentSceneIndex + 1);
         }));
+    }
+
+    private void loadNextDebugLevel()
+    {
+        var lastSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
+        var nextOrFirstSceneIndex = currentSceneIndex == lastSceneIndex ? 0 : currentSceneIndex + 1;
+        SceneManager.LoadScene(nextOrFirstSceneIndex);
     }
 
     private void resetLevel()
