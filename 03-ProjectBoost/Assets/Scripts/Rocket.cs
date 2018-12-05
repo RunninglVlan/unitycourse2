@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Rocket : MonoBehaviour
 {
     private const string THRUST_BUTTON = "Jump";
+    private const string ROTATION_AXIS = "Horizontal";
     private const float DISTANCE_FROM_PAD = 2.5f;
 
     [SerializeField] int thrust = 20;
@@ -26,7 +27,7 @@ public class Rocket : MonoBehaviour
     new private Rigidbody rigidbody;
     private AudioSource audioSource;
     private int currentSceneIndex;
-    private State state = State.Alive;
+    private bool transitioning = false;
     private bool collisionsDisabled = false;
 
     void Start()
@@ -38,12 +39,15 @@ public class Rocket : MonoBehaviour
 
     void Update()
     {
-        if (state != State.Alive)
+        if (transitioning)
         {
             return;
         }
         moveUp();
-        rotate();
+        if (Input.GetButton(ROTATION_AXIS))
+        {
+            rotate();
+        }
         if (Debug.isDebugBuild)
         {
             processDebugKeys();
@@ -54,23 +58,28 @@ public class Rocket : MonoBehaviour
     {
         if (Input.GetButton(THRUST_BUTTON))
         {
-            rigidbody.AddRelativeForce(Vector3.up * thrust);
-            if (!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(thrustSound);
-            }
-            thrustEffect.Play();
+            applyThrust();
         }
         else
         {
-            stopAudioAndThrustEffect();
+            stopApplyingThrust();
         }
+    }
+
+    private void applyThrust()
+    {
+        rigidbody.AddRelativeForce(Vector3.up * thrust);
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(thrustSound);
+        }
+        thrustEffect.Play();
     }
 
     private void rotate()
     {
         rigidbody.freezeRotation = true;
-        transform.Rotate(Vector3.back * Input.GetAxis("Horizontal") * torque * Time.deltaTime);
+        transform.Rotate(Vector3.back * Input.GetAxis(ROTATION_AXIS) * torque * Time.deltaTime);
         rigidbody.freezeRotation = false;
     }
 
@@ -88,11 +97,11 @@ public class Rocket : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (state != State.Alive || collisionsDisabled)
+        if (transitioning || collisionsDisabled)
         {
             return;
         }
-        stopAudioAndThrustEffect();
+        stopApplyingThrust();
         if (other.gameObject.tag == "Finish")
         {
             loadNextLevel();
@@ -103,7 +112,7 @@ public class Rocket : MonoBehaviour
         }
     }
 
-    private void stopAudioAndThrustEffect()
+    private void stopApplyingThrust()
     {
         audioSource.Stop();
         thrustEffect.Stop();
@@ -111,7 +120,7 @@ public class Rocket : MonoBehaviour
 
     private void loadNextLevel()
     {
-        state = State.Transcending;
+        transitioning = true;
         audioSource.PlayOneShot(levelLoadSound);
         levelLoadEffect.Play();
         StartCoroutine(after(levelLoadDelay, () =>
@@ -129,7 +138,7 @@ public class Rocket : MonoBehaviour
 
     private void resetLevel()
     {
-        state = State.Dying;
+        transitioning = true;
         audioSource.PlayOneShot(deathSound);
         deathEffect.Play();
         StartCoroutine(after(levelLoadDelay, () =>
@@ -142,10 +151,5 @@ public class Rocket : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         action();
-    }
-
-    private enum State
-    {
-        Alive, Dying, Transcending
     }
 }
