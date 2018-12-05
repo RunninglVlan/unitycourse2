@@ -87,7 +87,7 @@ public class Rocket : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            loadNextDebugLevel();
+            loadNextScene();
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -125,11 +125,11 @@ public class Rocket : MonoBehaviour
         levelLoadEffect.Play();
         StartCoroutine(after(levelLoadDelay, () =>
         {
-            SceneManager.LoadScene(currentSceneIndex + 1);
+            loadNextScene();
         }));
     }
 
-    private void loadNextDebugLevel()
+    private void loadNextScene()
     {
         var lastSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
         var nextOrFirstSceneIndex = currentSceneIndex == lastSceneIndex ? 0 : currentSceneIndex + 1;
