@@ -27,6 +27,7 @@ public class Rocket : MonoBehaviour
     private AudioSource audioSource;
     private int currentSceneIndex;
     private State state = State.Alive;
+    private bool collisionsDisabled = false;
 
     void Start()
     {
@@ -43,6 +44,10 @@ public class Rocket : MonoBehaviour
         }
         moveUp();
         rotate();
+        if (Debug.isDebugBuild)
+        {
+            processDebugKeys();
+        }
     }
 
     private void moveUp()
@@ -69,9 +74,21 @@ public class Rocket : MonoBehaviour
         rigidbody.freezeRotation = false;
     }
 
+    private void processDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            loadNextLevel();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionsDisabled = !collisionsDisabled;
+        }
+    }
+
     void OnCollisionEnter(Collision other)
     {
-        if (state != State.Alive)
+        if (state != State.Alive || collisionsDisabled)
         {
             return;
         }

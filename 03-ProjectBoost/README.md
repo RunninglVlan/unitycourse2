@@ -73,6 +73,7 @@
 - If on Scene load some light is missing, then open Lighting Settings Window and try Generating Lighting manually for each Scene
 - [ParticleSystem.Play](https://docs.unity3d.com/ScriptReference/ParticleSystem.Play.html)
 - Prefabs cannot be nested under other prefabs, i.e. if it is nested and you'll change original prefab, prefab nested under another prefab won't change as it is just a copy of that original prefab.
+- [Debug.isDebugBuild](https://docs.unity3d.com/ScriptReference/Debug-isDebugBuild.html)
 
 ## Assets used
 - Sound FX:
