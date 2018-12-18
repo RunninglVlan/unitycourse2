@@ -2,17 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
     private const string THRUST_BUTTON = "Jump";
     private const string ROTATION_AXIS = "Horizontal";
-    private const float DISTANCE_FROM_PAD = 2.5f;
 
     [SerializeField] int thrust = 20;
     [SerializeField] int torque = 10;
-    [SerializeField] float levelLoadDelay = 1;
 
     [Header("Sounds")]
     [SerializeField] AudioClip thrustSound;
@@ -26,7 +23,7 @@ public class Rocket : MonoBehaviour
 
     new private Rigidbody rigidbody;
     private AudioSource audioSource;
-    private int currentSceneIndex;
+    private Level level;
     private bool transitioning = false;
     private bool collisionsDisabled = false;
 
@@ -34,7 +31,7 @@ public class Rocket : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
-        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        level = FindObjectOfType<Level>();
     }
 
     void Update()
@@ -87,7 +84,7 @@ public class Rocket : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            loadNextScene();
+            level.loadNextScene();
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -123,17 +120,7 @@ public class Rocket : MonoBehaviour
         transitioning = true;
         audioSource.PlayOneShot(levelLoadSound);
         levelLoadEffect.Play();
-        StartCoroutine(after(levelLoadDelay, () =>
-        {
-            loadNextScene();
-        }));
-    }
-
-    private void loadNextScene()
-    {
-        var lastSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
-        var nextOrFirstSceneIndex = currentSceneIndex == lastSceneIndex ? 0 : currentSceneIndex + 1;
-        SceneManager.LoadScene(nextOrFirstSceneIndex);
+        level.loadNext();
     }
 
     private void resetLevel()
@@ -141,15 +128,6 @@ public class Rocket : MonoBehaviour
         transitioning = true;
         audioSource.PlayOneShot(deathSound);
         deathEffect.Play();
-        StartCoroutine(after(levelLoadDelay, () =>
-        {
-            SceneManager.LoadScene(currentSceneIndex);
-        }));
-    }
-
-    private IEnumerator after(float delay, Action action)
-    {
-        yield return new WaitForSeconds(delay);
-        action();
+        level.reset();
     }
 }
