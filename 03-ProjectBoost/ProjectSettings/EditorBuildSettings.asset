@@ -5,16 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Sandbox.unity
+    guid: 83dafc56ff0f32f4ca8cdf3fbecfc510
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/Level1 - from left to right.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
+    path: Assets/Scenes/Level2 - from down to up.unity
     guid: 97c502d8412f44d4ea833e3bd569003d
   - enabled: 1
-    path: Assets/Scenes/Level3.unity
+    path: Assets/Scenes/Level3 - dark and moving.unity
     guid: 4ac8aab57f6b76a41bf1876f2c1d35e0
   - enabled: 1
-    path: Assets/Scenes/Level4.unity
+    path: Assets/Scenes/Level4 - double moving.unity
     guid: 07061cd258d6fe744ac2f4260fd2294e
   m_configObjects: {}
