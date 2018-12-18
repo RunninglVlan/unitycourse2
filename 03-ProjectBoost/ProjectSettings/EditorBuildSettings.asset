@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 295b1d2074515304ea7194bc6b807535
   - enabled: 0
     path: Assets/Scenes/Sandbox.unity
     guid: 83dafc56ff0f32f4ca8cdf3fbecfc510
@@ -20,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level4 - double moving.unity
     guid: 07061cd258d6fe744ac2f4260fd2294e
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: 336d3393d3921bb4c9bdd9831bf8e0f1
   m_configObjects: {}
