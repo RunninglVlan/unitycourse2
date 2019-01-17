@@ -5,6 +5,7 @@
   - Base Map Distance - Maximum distance at which terrain textures will be displayed at full resolution
   - Cast Shadows
 - Terrain data is stored in binary form and can be shared between game objects (e.g. if scene will be duplicated, duplicate terrain will use the same binary ASSET). This binary data can be converted to text using Unity Tool binary2text.exe
+- When Input is keyboard/mouse larger Sensitivity is responsible for faster response time, and larger Gravity - for faster time the input recenters.
 
 ## Assets used
 - Textures & Materials:
