@@ -4,6 +4,7 @@
   - Pixel Error - higher values indicate lower accuracy of the mapping between the terrain maps and the generated terrain but lower rendering overhead
   - Base Map Distance - Maximum distance at which terrain textures will be displayed at full resolution
   - Cast Shadows
+- Terrain data is stored in binary form and can be shared between game objects (e.g. if scene will be duplicated, duplicate terrain will use the same binary ASSET). This binary data can be converted to text using Unity Tool binary2text.exe
 
 ## Assets used
 - Textures & Materials:
