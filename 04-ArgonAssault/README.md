@@ -11,3 +11,4 @@
   - [_Skybox Volume 2 ..._ by Hedgehog Team](https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-volume-2-nebula-3392)
 - [_Star Sparrow ..._ by Ebal Studios](https://assetstore.unity.com/packages/3d/vehicles/space/star-sparrow-modular-spaceship-73167)
 - [_Star Commander1_ by DL Sounds](https://www.dl-sounds.com/royalty-free/star-commander1/)
+- [_Standard (Utility) Assets_ by Unity Technologies](https://assetstore.unity.com/packages/essentials/asset-packs/standard-assets-32351)
