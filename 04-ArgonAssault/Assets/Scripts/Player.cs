@@ -28,12 +28,17 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        processResolutionChange();
+        move();
+    }
+
+    private void processResolutionChange()
+    {
         if (resolution.x != Screen.width || resolution.y != Screen.height)
         {
-            setUpMovementBoundaries();
             resolution = new Vector2(Screen.width, Screen.height);
+            setUpMovementBoundaries();
         }
-        move();
     }
 
     private void move()
