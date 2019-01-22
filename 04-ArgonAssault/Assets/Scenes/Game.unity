@@ -698,8 +698,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resolutionCamera: {fileID: 1407667995}
-  movementSpeed: 15
-  extents: {x: 9, y: 4.5}
+  movementSpeed: 20
+  extents: {x: 6, y: 3}
+  positionPitchFactor: -2
+  throwPitchFactor: -20
+  positionYawFactor: 2
+  throwRollFactor: -20
 --- !u!1 &853960370
 GameObject:
   m_ObjectHideFlags: 0
