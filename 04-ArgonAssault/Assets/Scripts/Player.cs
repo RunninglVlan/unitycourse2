@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] Camera resolutionCamera;
     [SerializeField] int movementSpeed = 20;
     [SerializeField] Vector2 extents = Vector2.one;
 
@@ -14,44 +13,20 @@ public class Player : MonoBehaviour
     [SerializeField] float positionYawFactor = 2;
     [SerializeField] float throwRollFactor = -20;
 
-    private Vector2 resolution;
     private float xBoundary;
     private float yBoundary;
     private Vector3 controlThrow;
 
-    void Awake()
+    public void setUpMovementBoundaries(Vector3 zeroBoundary, Vector3 oneBoundary)
     {
-        resolutionCamera.fieldOfView = Camera.main.fieldOfView;
-    }
-
-    void Start()
-    {
-        resolution = new Vector2(Screen.width, Screen.height);
-        setUpMovementBoundaries();
-    }
-
-    private void setUpMovementBoundaries()
-    {
-        var zeroBoundary = resolutionCamera.ViewportToWorldPoint(new Vector3(0, 0, transform.localPosition.z));
-        var oneBoundary = resolutionCamera.ViewportToWorldPoint(new Vector3(1, 1, transform.localPosition.z));
         xBoundary = (oneBoundary.x - zeroBoundary.x) / 2 - extents.x;
         yBoundary = (oneBoundary.y - zeroBoundary.y) / 2 - extents.y;
     }
 
     void Update()
     {
-        processResolutionChange();
         move();
         rotate();
-    }
-
-    private void processResolutionChange()
-    {
-        if (resolution.x != Screen.width || resolution.y != Screen.height)
-        {
-            resolution = new Vector2(Screen.width, Screen.height);
-            setUpMovementBoundaries();
-        }
     }
 
     private void move()
