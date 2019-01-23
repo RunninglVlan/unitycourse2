@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] int movementSpeed = 20;
-    [SerializeField] Vector2 extents = Vector2.one;
 
     [Header("Rotation")]
     [SerializeField] float positionPitchFactor = -2;
@@ -19,6 +18,7 @@ public class Player : MonoBehaviour
 
     public void setUpMovementBoundaries(Vector3 zeroBoundary, Vector3 oneBoundary)
     {
+        var extents = GetComponent<Renderer>().bounds.extents;
         xBoundary = (oneBoundary.x - zeroBoundary.x) / 2 - extents.x;
         yBoundary = (oneBoundary.y - zeroBoundary.y) / 2 - extents.y;
     }
