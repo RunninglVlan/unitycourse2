@@ -13,6 +13,10 @@
 - Textures & Materials:
   - [_PBR Materials_ by Epyphany games](https://assetstore.unity.com/packages/2d/textures-materials/24-pbr-materials-for-unity-5-51991)
   - [_Skybox Volume 2 ..._ by Hedgehog Team](https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-volume-2-nebula-3392)
-- [_Star Sparrow ..._ by Ebal Studios](https://assetstore.unity.com/packages/3d/vehicles/space/star-sparrow-modular-spaceship-73167)
+- Models:
+  - [_Star Sparrow ..._ by Ebal Studios](https://assetstore.unity.com/packages/3d/vehicles/space/star-sparrow-modular-spaceship-73167)
+  - [_... Sc-Fi Space Objects_ by Ebal Studios](https://assetstore.unity.com/packages/3d/environments/sci-fi/modular-sc-fi-space-objects-120608)
+  - [_... Asteroids_ by Ebal Studios](https://assetstore.unity.com/packages/3d/environments/sci-fi/space-shooter-asteroids-96444)
+  - [_... Arcade Style Spaceships_ by Ebal Studios](https://assetstore.unity.com/packages/3d/vehicles/space/generic-arcade-style-spaceships-97811)
 - [_Star Commander1_ by DL Sounds](https://www.dl-sounds.com/royalty-free/star-commander1/)
 - [_Standard (Utility) Assets_ by Unity Technologies](https://assetstore.unity.com/packages/essentials/asset-packs/standard-assets-32351)
