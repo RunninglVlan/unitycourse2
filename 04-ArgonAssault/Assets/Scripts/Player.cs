@@ -19,6 +19,11 @@ public class Player : MonoBehaviour
     private float yBoundary;
     private Vector3 controlThrow;
 
+    void Awake()
+    {
+        resolutionCamera.fieldOfView = Camera.main.fieldOfView;
+    }
+
     void Start()
     {
         resolution = new Vector2(Screen.width, Screen.height);
