@@ -49,4 +49,9 @@ public class Player : MonoBehaviour
         var roll = controlThrow.x * throwRollFactor;
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        print(other.gameObject.name);
+    }
 }
