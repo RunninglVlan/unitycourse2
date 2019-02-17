@@ -276,7 +276,8 @@ GameObject:
   - component: {fileID: 33413632727765270}
   - component: {fileID: 23496527303668514}
   - component: {fileID: 1281770302}
-  - component: {fileID: 1281770299}
+  - component: {fileID: 3758201811667932862}
+  - component: {fileID: 4734739603042556392}
   m_Layer: 0
   m_Name: StarSparrow10
   m_TagString: Untagged
@@ -362,7 +363,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1281770299
+--- !u!114 &3758201811667932862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -371,7 +372,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1641971311212662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74a15523a3c4f6649a8931ba04e61f71, type: 3}
+  m_Script: {fileID: 11500000, guid: 42db31a115e865f4aaa151b32ee490d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 20
@@ -379,6 +380,18 @@ MonoBehaviour:
   throwPitchFactor: -20
   positionYawFactor: 2
   throwRollFactor: -20
+--- !u!114 &4734739603042556392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641971311212662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea83e3852989ed54cbf43ed0e3ab650d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1814407914877542
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] int movementSpeed = 20;
 
@@ -48,10 +48,5 @@ public class Player : MonoBehaviour
         var yaw = transform.localPosition.x * positionYawFactor;
         var roll = controlThrow.x * throwRollFactor;
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        print(other.gameObject.name);
     }
 }

@@ -6,7 +6,7 @@ public class ResolutionCamera : MonoBehaviour
 {
     private new Camera camera;
     private Vector2 resolution = Vector2.zero;
-    private Player player;
+    private PlayerController player;
 
     void Awake()
     {
@@ -16,7 +16,7 @@ public class ResolutionCamera : MonoBehaviour
 
     void Start()
     {
-        player = FindObjectOfType<Player>();
+        player = FindObjectOfType<PlayerController>();
     }
 
     void Update()
