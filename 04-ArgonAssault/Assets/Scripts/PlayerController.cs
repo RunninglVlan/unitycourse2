@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private float xBoundary;
     private float yBoundary;
     private Vector3 controlThrow;
+    private bool controlsFrozen;
 
     public void setUpMovementBoundaries(Vector3 zeroBoundary, Vector3 oneBoundary)
     {
@@ -25,6 +26,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (controlsFrozen)
+        {
+            return;
+        }
         move();
         rotate();
     }
@@ -48,5 +53,15 @@ public class PlayerController : MonoBehaviour
         var yaw = transform.localPosition.x * positionYawFactor;
         var roll = controlThrow.x * throwRollFactor;
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    void OnPlayerDeath()
+    {
+        freezeControls();
+    }
+
+    private void freezeControls()
+    {
+        controlsFrozen = true;
     }
 }

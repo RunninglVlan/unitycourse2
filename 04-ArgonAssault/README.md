@@ -11,6 +11,8 @@
 - Internally rotation is stored as Quaternion, so we need to use [Quaternion.Euler](https://docs.unity3d.com/ScriptReference/Quaternion.Euler.html) to convert 3D XYZ rotation to 4D XYZW rotation.
 - Order of rotation matters. Rotating by Y and then by X is not the same as rotating by X and then by Y, e.g. using `transform.Rotate`. In the latter example Z will also change, when rotating by Y after X.
 - By holding down Ctrl and rotating objects using _Rotate Tool_ the values will be changed by certain amount, e.g. 0, 15, 30 degrees.
+- Messages (AKA events) to other scripts on the object can be sent using [SendMessage](https://docs.unity3d.com/ScriptReference/GameObject.SendMessage.html). This way you don't need script's reference in the caller.
+- Game objects can be enabled/disabled through code using [SetActive](https://docs.unity3d.com/ScriptReference/GameObject.SetActive.html)
 
 ## Assets used
 - Textures & Materials:
