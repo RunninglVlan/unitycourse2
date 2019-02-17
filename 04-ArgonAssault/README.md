@@ -7,6 +7,7 @@
 - Another way to optimize performance during development is to turn off Auto Generation of lighting in Lighting Settings
 - Terrain data is stored in binary form and can be shared between game objects (e.g. if scene will be duplicated, duplicate terrain will use the same binary ASSET). This binary data can be converted to text using Unity Tool binary2text.exe
 - When Input is keyboard/mouse larger Sensitivity is responsible for faster response time, and larger Gravity - for faster time the input recenters.
+- Script properties can have [Tooltips](https://docs.unity3d.com/ScriptReference/TooltipAttribute.html)
 - Internally rotation is stored as Quaternion, so we need to use [Quaternion.Euler](https://docs.unity3d.com/ScriptReference/Quaternion.Euler.html) to convert 3D XYZ rotation to 4D XYZW rotation.
 - Order of rotation matters. Rotating by Y and then by X is not the same as rotating by X and then by Y, e.g. using `transform.Rotate`. In the latter example Z will also change, when rotating by Y after X.
 - By holding down Ctrl and rotating objects using _Rotate Tool_ the values will be changed by certain amount, e.g. 0, 15, 30 degrees.
