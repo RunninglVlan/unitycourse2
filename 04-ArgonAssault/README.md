@@ -13,6 +13,7 @@
 - By holding down Ctrl and rotating objects using _Rotate Tool_ the values will be changed by certain amount, e.g. 0, 15, 30 degrees.
 - Messages (AKA events) to other scripts on the object can be sent using [SendMessage](https://docs.unity3d.com/ScriptReference/GameObject.SendMessage.html). This way you don't need script's reference in the caller.
 - Game objects can be enabled/disabled through code using [SetActive](https://docs.unity3d.com/ScriptReference/GameObject.SetActive.html)
+- Active objects can be found using [FindObjectOfType](https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html)
 
 ## Assets used
 - Textures & Materials:
