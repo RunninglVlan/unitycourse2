@@ -90,4 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b1bfd3113a33a641a60808d46eca959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 4235215222013248667, guid: 06e9d8c910d191e4692331d742543009,
+    type: 3}
   colliderSize: {x: 0.6, y: 0.6, z: 0.1}

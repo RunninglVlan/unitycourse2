@@ -6,6 +6,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Vector3 colliderSize = Vector3.zero;
+    [SerializeField] GameObject explosionPrefab;
+    [SerializeField] float explosionDestructionDelay = 1;
 
     void Start()
     {
@@ -21,6 +23,8 @@ public class Enemy : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
+        var explosion = Instantiate(explosionPrefab, gameObject.transform.position, Quaternion.identity);
+        Destroy(explosion, explosionDestructionDelay);
         Destroy(gameObject);
     }
 }
