@@ -15,6 +15,7 @@
 - Game objects can be enabled/disabled through code using [SetActive](https://docs.unity3d.com/ScriptReference/GameObject.SetActive.html)
 - Active objects can be found using [FindObjectOfType](https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html)
 - Collisions with Particles can be handled using [OnParticleCollision](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnParticleCollision.html)
+- Components can be added programmatically using [AddComponent](https://docs.unity3d.com/ScriptReference/GameObject.AddComponent.html)
 
 ## Assets used
 - Textures & Materials:
