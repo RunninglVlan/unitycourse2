@@ -14,6 +14,7 @@
 - Messages (AKA events) to other scripts on the object can be sent using [SendMessage](https://docs.unity3d.com/ScriptReference/GameObject.SendMessage.html). This way you don't need script's reference in the caller.
 - Game objects can be enabled/disabled through code using [SetActive](https://docs.unity3d.com/ScriptReference/GameObject.SetActive.html)
 - Active objects can be found using [FindObjectOfType](https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html)
+- Collisions with Particles can be handled using [OnParticleCollision](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnParticleCollision.html)
 
 ## Assets used
 - Textures & Materials:
