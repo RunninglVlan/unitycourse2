@@ -6,10 +6,8 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
-    private const string FIRE_BUTTON = "Fire";
-
     [SerializeField] int movementSpeed = 20;
-    [SerializeField] List<GameObject> guns;
+    [SerializeField] List<ParticleSystem> bullets;
 
     [Header("Rotation")]
     [SerializeField] float positionPitchFactor = -2;
@@ -24,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        activateGuns(false);
+        enableBulletEmission(false);
     }
 
     public void setUpMovementBoundaries(Vector3 zeroBoundary, Vector3 oneBoundary)
@@ -68,19 +66,19 @@ public class PlayerController : MonoBehaviour
 
     private void fire()
     {
-        if (Input.GetButtonDown(FIRE_BUTTON))
+        if (Input.GetButton("Fire"))
         {
-            activateGuns(true);
+            enableBulletEmission(true);
         }
-        if (Input.GetButtonUp(FIRE_BUTTON))
+        else
         {
-            activateGuns(false);
+            enableBulletEmission(false);
         }
     }
 
-    private void activateGuns(bool value)
+    private void enableBulletEmission(bool value)
     {
-        guns.ForEach(it => it.SetActive(value));
+        bullets.Select(it => it.emission).ToList().ForEach(it => it.enabled = value);
     }
 
     void OnPlayerDeath()
