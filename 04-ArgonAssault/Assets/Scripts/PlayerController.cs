@@ -1,10 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
+    private const string FIRE_BUTTON = "Fire";
+
     [SerializeField] int movementSpeed = 20;
+    [SerializeField] List<GameObject> guns;
 
     [Header("Rotation")]
     [SerializeField] float positionPitchFactor = -2;
@@ -16,6 +21,11 @@ public class PlayerController : MonoBehaviour
     private float yBoundary;
     private Vector3 controlThrow;
     private bool controlsFrozen;
+
+    void Start()
+    {
+        activateGuns(false);
+    }
 
     public void setUpMovementBoundaries(Vector3 zeroBoundary, Vector3 oneBoundary)
     {
@@ -32,6 +42,7 @@ public class PlayerController : MonoBehaviour
         }
         move();
         rotate();
+        fire();
     }
 
     private void move()
@@ -53,6 +64,23 @@ public class PlayerController : MonoBehaviour
         var yaw = transform.localPosition.x * positionYawFactor;
         var roll = controlThrow.x * throwRollFactor;
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    private void fire()
+    {
+        if (Input.GetButtonDown(FIRE_BUTTON))
+        {
+            activateGuns(true);
+        }
+        if (Input.GetButtonUp(FIRE_BUTTON))
+        {
+            activateGuns(false);
+        }
+    }
+
+    private void activateGuns(bool value)
+    {
+        guns.ForEach(it => it.SetActive(value));
     }
 
     void OnPlayerDeath()
