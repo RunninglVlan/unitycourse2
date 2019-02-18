@@ -91,7 +91,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderSize: {x: 0.4, y: 0.5, z: 0.2}
+  hitSound: {fileID: 8300000, guid: 1822c17fdc0b37a488f193fd3eb8ab9f, type: 3}
   explosionPrefab: {fileID: 4235215222013248667, guid: 06e9d8c910d191e4692331d742543009,
     type: 3}
   explosionDestructionDelay: 1
-  pointsPerDeath: 500
+  pointsPerHit: 500
+  hitsUntilDeath: 6
