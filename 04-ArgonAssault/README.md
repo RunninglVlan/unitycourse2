@@ -1,4 +1,7 @@
 # Notes
+## Game design
+- For this type of game it's good to have [_Intensity x Time_ Beat Chart](https://community.gamedev.tv/t/be-the-first-to-post-for-level-design-beat-chart/50195). Rail Shooter should be like roller coaster. No 10 seconds should be the same.
+
 ## What's new
 - Terrain rendering takes a lot of power. To optimize performance, some [settings](https://docs.unity3d.com/Manual/terrain-OtherSettings.html) can be tweaked
   - Pixel Error - higher values indicate lower accuracy of the mapping between the terrain maps and the generated terrain but lower rendering overhead
