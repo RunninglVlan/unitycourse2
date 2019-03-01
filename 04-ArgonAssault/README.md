@@ -19,6 +19,10 @@
 - Active objects can be found using [FindObjectOfType](https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html)
 - Collisions with Particles can be handled using [OnParticleCollision](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnParticleCollision.html)
 - Components can be added programmatically using [AddComponent](https://docs.unity3d.com/ScriptReference/GameObject.AddComponent.html)
+- [Timeline](https://docs.unity3d.com/Manual/TimelineSection.html) is used to create cinematic content, game-play sequences, audio sequences and complex particle effects
+  - Animation Track is used to change model animations or change its Transform values manually
+  - Control Track lets you start other Timelines in the main one
+  - Activation Track is responsible for GameObject's Active state - enable/disable it, e.g. activate different Cameras during the clip
 
 ## Assets used
 - Textures & Materials:

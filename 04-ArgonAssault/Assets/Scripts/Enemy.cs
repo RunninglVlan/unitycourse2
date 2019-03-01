@@ -47,13 +47,16 @@ public class Enemy : MonoBehaviour
         {
             die();
         }
+        else
+        {
+            hitAudio.Play();
+        }
     }
 
     private void hit()
     {
         scoreBoard.add(pointsPerHit);
         hitsUntilDeath--;
-        hitAudio.Play();
     }
 
     private void die()
