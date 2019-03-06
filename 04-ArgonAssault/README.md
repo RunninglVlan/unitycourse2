@@ -23,6 +23,7 @@
   - Animation Track is used to change model animations or change its Transform values manually
   - Control Track lets you start other Timelines in the main one
   - Activation Track is responsible for GameObject's Active state - enable/disable it, e.g. activate different Cameras during the clip
+  - Audio Track is for playing Audio Clips. Volume and other properties can be adjusted by adding Audio Source object
 
 ## Assets used
 - Textures & Materials:
@@ -33,6 +34,9 @@
   - [_... Sc-Fi Space Objects_ by Ebal Studios](https://assetstore.unity.com/packages/3d/environments/sci-fi/modular-sc-fi-space-objects-120608)
   - [_... Asteroids_ by Ebal Studios](https://assetstore.unity.com/packages/3d/environments/sci-fi/space-shooter-asteroids-96444)
   - [_... Arcade Style Spaceships_ by Ebal Studios](https://assetstore.unity.com/packages/3d/vehicles/space/generic-arcade-style-spaceships-97811)
-- [_RailJet / Long Seamless Loop_ by DST](https://opengameart.org/content/railjet-long-seamless-loop) (Original taken from [nosoapradio.us](http://www.nosoapradio.us/))
+- Audio:
+  - [_RailJet / Long Seamless Loop_ by DST](https://opengameart.org/content/railjet-long-seamless-loop) (Original taken from [nosoapradio.us](http://www.nosoapradio.us/))
+  - [_Voice Clips_ from Star Fox 64](http://www.starfox64.baldninja.com/sf64snds.htm)
 - [_Standard (Utility) Assets_ by Unity Technologies](https://assetstore.unity.com/packages/essentials/asset-packs/standard-assets-32351)
 - [_SD Hall_ Font by Sompong Pradubboot](https://www.dafont.com/sd-hall.font)
+- [Image from _Bumblebee figure_ by Hasbro](https://shop.hasbro.com/en-us/product/transformers-mighty-muggs-bumblebee-3:0230BA5B-E019-4698-B4DE-252547F6FDE0)
