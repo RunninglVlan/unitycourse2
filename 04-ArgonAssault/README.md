@@ -24,6 +24,7 @@
   - Control Track lets you start other Timelines in the main one
   - Activation Track is responsible for GameObject's Active state - enable/disable it, e.g. activate different Cameras during the clip
   - Audio Track is for playing Audio Clips. Volume and other properties can be adjusted by adding Audio Source object
+- [Fog](https://docs.unity3d.com/Manual/PostProcessing-Fog.html) can be added in Lighting Settings
 
 ## Assets used
 - Textures & Materials:
