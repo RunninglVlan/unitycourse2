@@ -2548,11 +2548,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3758201811667932862, guid: fb80d574ec67a7c4e8ef1a14a65990f6,
         type: 3}
-      propertyPath: bullets.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3758201811667932862, guid: fb80d574ec67a7c4e8ef1a14a65990f6,
-        type: 3}
       propertyPath: guns.Array.data[0]
       value: 
       objectReference: {fileID: 641968304}
@@ -2569,16 +2564,6 @@ PrefabInstance:
     - target: {fileID: 3758201811667932862, guid: fb80d574ec67a7c4e8ef1a14a65990f6,
         type: 3}
       propertyPath: guns.Array.data[3]
-      value: 
-      objectReference: {fileID: 1477146760}
-    - target: {fileID: 3758201811667932862, guid: fb80d574ec67a7c4e8ef1a14a65990f6,
-        type: 3}
-      propertyPath: bullets.Array.data[0]
-      value: 
-      objectReference: {fileID: 641968304}
-    - target: {fileID: 3758201811667932862, guid: fb80d574ec67a7c4e8ef1a14a65990f6,
-        type: 3}
-      propertyPath: bullets.Array.data[1]
       value: 
       objectReference: {fileID: 1477146760}
     - target: {fileID: 2583616918667256083, guid: fb80d574ec67a7c4e8ef1a14a65990f6,

@@ -6,7 +6,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Vector3 colliderSize = Vector3.zero;
+
+    [Header("Hit")]
     [SerializeField] AudioClip hitSound;
+    [SerializeField] float hitVolume = 0.5f;
 
     [Header("Explosion")]
     [SerializeField] GameObject explosionPrefab;
@@ -37,6 +40,7 @@ public class Enemy : MonoBehaviour
     {
         hitAudio = gameObject.AddComponent<AudioSource>();
         hitAudio.clip = hitSound;
+        hitAudio.volume = hitVolume;
         hitAudio.playOnAwake = false;
     }
 
