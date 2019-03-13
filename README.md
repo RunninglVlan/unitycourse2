@@ -2,9 +2,13 @@
 For [C# Unity Developer 3D course](https://www.udemy.com/unitycourse2/)
 
 ## WebGL builds
-2. [TerminalHacker](https://runninglvlan.github.io/unitycourse2/02-TerminalHacker/)
-3. [ProjectBoost](https://runninglvlan.github.io/unitycourse2/03-ProjectBoost/)
-4. [ArgonAssault](https://runninglvlan.github.io/unitycourse2/04-ArgonAssault/)
+<table>
+  <tr>
+    <td><a href="https://runninglvlan.github.io/unitycourse2/02-TerminalHacker/"><img src="/docs/02-TerminalHacker/thumbnail.png" /></a><br>2. TerminalHacker</td>
+    <td><a href="https://runninglvlan.github.io/unitycourse2/03-ProjectBoost/"><img src="/docs/03-ProjectBoost/thumbnail.png" /></a><br>3. ProjectBoost</td>
+    <td><a href="https://runninglvlan.github.io/unitycourse2/04-ArgonAssault/"><img src="/docs/04-ArgonAssault/thumbnail.png" /></a><br>4. ArgonAssault</td>
+  </tr>
+</table>
 
 ## Useful resources
 - Open marketplace for indie games: [itch.io](https://itch.io/)
