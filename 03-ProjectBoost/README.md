@@ -1,4 +1,7 @@
 # Notes
+## Section 3
+Project Boost - Basic Unity, 42 Lectures: [34](https://www.udemy.com/unitycourse2/learn/v4/t/lecture/8243746) - [72](https://www.udemy.com/unitycourse2/learn/v4/t/lecture/8406448)
+
 ## What's new
 - Use Rigidbody's [AddRelativeForce](https://docs.unity3d.com/ScriptReference/Rigidbody.AddRelativeForce.html) to add a force relative to its coordinate system.
 - Pivot point is the object's origin around which it rotates. It's very crucial for compound objects, or to change rotation point of a simple object.

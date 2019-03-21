@@ -1,4 +1,7 @@
 # Notes
+## Section 4
+Argon Assault - Rails Shooter, 50 Lectures: [73](https://www.udemy.com/unitycourse2/learn/v4/t/lecture/8401196) - [118](https://www.udemy.com/unitycourse2/learn/v4/t/lecture/8859276)
+
 ## Game design
 - For this type of game it's good to have [_Intensity x Time_ Beat Chart](https://community.gamedev.tv/t/be-the-first-to-post-for-level-design-beat-chart/50195). Rail Shooter should be like roller coaster. No 10 seconds should be the same.
 
